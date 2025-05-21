@@ -1,16 +1,17 @@
 import './helper/fileReader.js';
 
 // @ts-ignore
-import git, { PromiseFsClient } from 'isomorphic-git/index.umd.min.js';
 import http from 'isomorphic-git/http/web/index.js';
-import * as promises from './helper/fs';
+import git, { PromiseFsClient } from 'isomorphic-git/index.umd.min.js';
 import type { CloneOption, PullOption } from '../type';
+import * as promises from './helper/fs';
+
+import RNFS from 'rn-fetch-blob';
 
 const fs: PromiseFsClient = { promises };
 const getFolder = (folderName?: string) => {
   try {
-    const { fs } = require('rn-fetch-blob');
-    const DocumentDirectoryPath = fs.dirs.DocumentDir;
+    const DocumentDirectoryPath = RNFS.fs.dirs.DocumentDir;
     return DocumentDirectoryPath + (folderName || '/git_hot_update');
   } catch (e) {}
   return '';
