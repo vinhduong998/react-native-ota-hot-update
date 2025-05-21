@@ -168,6 +168,8 @@ const checkForGitUpdate = async (options: UpdateGitOption) => {
       git.getConfig(),
       git.getBranchName(),
     ]);
+
+    console.log('config, branch', config, branch)
     if (branch && config) {
       const pull = await git.pullUpdate({
         branch,
