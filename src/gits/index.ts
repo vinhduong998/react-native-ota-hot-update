@@ -9,7 +9,8 @@ import type { CloneOption, PullOption } from '../type';
 const fs: PromiseFsClient = { promises };
 const getFolder = (folderName?: string) => {
   try {
-    const { DocumentDirectoryPath } = require('react-native-fs');
+    const { fs } = require('rn-fetch-blob');
+    const DocumentDirectoryPath = fs.dirs.DocumentDir;
     return DocumentDirectoryPath + (folderName || '/git_hot_update');
   } catch (e) {}
   return '';

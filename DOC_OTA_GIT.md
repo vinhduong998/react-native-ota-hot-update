@@ -20,9 +20,9 @@ Currently, this feature supports the following Git hosting platforms:
 I strongly recommend you to self hosted git into your server, don't use free git hosting if you really run you application. Some guideline: https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server
 
 ## Installation
-If you want to use git control, you may need install `react-native-fs`
+If you want to use git control, you may need install `rn-fetch-blob`
 
-`yarn add react-native-fs`
+`yarn add rn-fetch-blob`
 
 ## Setting Up a Git Repository for Hot Update
 

@@ -2,14 +2,13 @@ import { Buffer } from 'buffer';
 
 let RNFS = {
   unlink: console.log,
-  readdir: console.log,
   mkdir: console.log,
   readFile: console.log,
   writeFile: console.log,
   stat: console.log,
 };
 try {
-  RNFS = require('react-native-fs');
+  RNFS = require('rn-fetch-blob');
 } catch {}
 
 function Err(name: string) {
@@ -28,25 +27,7 @@ function Err(name: string) {
 
 // const EEXIST = Err('EEXIST'); // <-- Unused because RNFS's mkdir never throws
 const ENOENT = Err('ENOENT');
-const ENOTDIR = Err('ENOTDIR');
 // const ENOTEMPTY = Err('ENOTEMPTY'); // <-- Unused because RNFS's unlink is recursive by default
-
-export const readdir = async (path: string) => {
-  try {
-    return await RNFS.readdir(path);
-  } catch (err: any) {
-    switch (err.message) {
-      case 'Attempt to get length of null array': {
-        throw new ENOTDIR(path);
-      }
-      case 'Folder does not exist': {
-        throw new ENOENT(path);
-      }
-      default:
-        throw err;
-    }
-  }
-};
 
 export const mkdir = async (path: string) => {
   return RNFS.mkdir(path);
